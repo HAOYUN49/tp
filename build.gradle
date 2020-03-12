@@ -44,17 +44,6 @@ run{
     standardInput = System.in
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main/java/seedu/']
-        }
-        resources {
-            srcDirs = ['src/main/java/seedu/nuke/gui/resource']
-        }
-    }
-}
-
 javafx {
     version = "11.0.2"
     modules = [ 'javafx.controls' ]

@@ -23,11 +23,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("V \u2022 NUS");
-        stage.getIcons().add(new Image("image/venus_icon.png"));
+        stage.getIcons().add(new Image("images/venus_icon.png"));
         stage.setMinWidth(1000);
         stage.setMinHeight(600);
 
-        FXMLLoader sceneLoader = new FXMLLoader(getClass().getResource("resource/main.fxml"));
+        FXMLLoader sceneLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
         Parent mainRoot = sceneLoader.load();
         Scene main = new Scene(mainRoot);
 
