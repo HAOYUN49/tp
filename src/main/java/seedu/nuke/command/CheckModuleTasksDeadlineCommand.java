@@ -5,13 +5,13 @@ import seedu.nuke.exception.ModuleNotFoundException;
 import seedu.nuke.module.Module;
 
 import static seedu.nuke.util.Message.MESSAGE_NO_TASK_IN_LIST;
-import static seedu.nuke.util.Message.MESSAGE_TASK_SUCCESSFULY_LIST;
+import static seedu.nuke.util.Message.MESSAGE_TASK_LIST_SUCCESSFUL;
 
 import java.util.ArrayList;
 
 public class CheckModuleTasksDeadlineCommand extends Command {
 
-    public static final String COMMAND_WORD = "lst";
+    public static final String COMMAND_WORD = "mlst";
     public static final String MESSAGE_USAGE = COMMAND_WORD;
 
     private int moduleIndex;
@@ -33,6 +33,6 @@ public class CheckModuleTasksDeadlineCommand extends Command {
             return new CommandResult(MESSAGE_NO_TASK_IN_LIST);
         }
         deadlines = module.checkDeadline();
-        return new CommandResult(String.format(MESSAGE_TASK_SUCCESSFULY_LIST, module.countTasks()));
+        return new CommandResult(String.format(MESSAGE_TASK_LIST_SUCCESSFUL, module.countTasks()));
     }
 }

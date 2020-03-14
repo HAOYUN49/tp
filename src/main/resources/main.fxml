@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seedu.nuke.gui.controller.MainController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <VBox prefHeight="600.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+            <children>
+                <VBox prefHeight="104.0" prefWidth="600.0">
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <VBox alignment="TOP_CENTER" prefHeight="90.0" prefWidth="166.0" spacing="2.0" style="-fx-background-color: #ecf2e9; -fx-border-color: lightgrey; -fx-border-radius: 5;" HBox.hgrow="SOMETIMES">
+                                    <children>
+                                        <Label text="Upcoming Events">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font></Label>
+                                        <Label text="Message" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </VBox>
+                                <GridPane hgap="2.0" prefHeight="99.0" prefWidth="465.0" HBox.hgrow="SOMETIMES">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: lightgrey; -fx-border-radius: 5;">
+                                            <children>
+                                                <Label text="MON">
+                                                    <font>
+                                                        <Font name="System Bold" size="12.0" />
+                                                    </font></Label>
+                                                <Separator prefWidth="200.0" />
+                                                <Label text="-" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </VBox>
+                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: lightgrey; -fx-border-radius: 5;" GridPane.columnIndex="1">
+                                            <children>
+                                                <Label text="TUE">
+                                                    <font>
+                                                        <Font name="System Bold" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Separator prefWidth="200.0" />
+                                                <Label text="-" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </VBox>
+                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: lightgrey; -fx-border-radius: 5;" GridPane.columnIndex="2">
+                                            <children>
+                                                <Label text="WED">
+                                                    <font>
+                                                        <Font name="System Bold" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Separator prefWidth="200.0" />
+                                                <Label text="-" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </VBox>
+                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: lightgrey; -fx-border-radius: 5;" GridPane.columnIndex="3">
+                                            <children>
+                                                <Label text="THU">
+                                                    <font>
+                                                        <Font name="System Bold" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Separator prefWidth="200.0" />
+                                                <Label text="-" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </VBox>
+                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: lightgrey; -fx-border-radius: 5;" GridPane.columnIndex="4">
+                                            <children>
+                                                <Label text="FRI">
+                                                    <font>
+                                                        <Font name="System Bold" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Separator prefWidth="200.0" />
+                                                <Label text="-" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </HBox>
+                        <Separator prefHeight="1.0" prefWidth="600.0">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                        </Separator>
+                    </children>
+                </VBox>
+                <HBox prefHeight="463.0" prefWidth="600.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="286.0" prefWidth="250.0" spacing="2.0" style="-fx-border-color: lightgrey; -fx-border-radius: 5;" HBox.hgrow="SOMETIMES">
+                            <children>
+                                <Label alignment="TOP_CENTER" text="Module List">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font></Label>
+                                <TreeView prefHeight="473.0" prefWidth="231.0" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-color: lightgrey; -fx-border-radius: 3;" VBox.vgrow="ALWAYS" />
+                            </children>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                        </VBox>
+                        <VBox prefHeight="463.0" prefWidth="360.0" HBox.hgrow="ALWAYS">
+                            <children>
+                        <ScrollPane fx:id="consoleScreenScrollPane" prefHeight="419.0" prefWidth="735.0" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                           <content>
+                                      <TextFlow fx:id="consoleScreen" lineSpacing="1.0" prefHeight="423.0" prefWidth="715.0" style="-fx-border-color: lightgrey; -fx-border-radius: 3; -fx-background-color: white;">
+                                          <padding>
+                                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                          </padding>
+                                          <effect>
+                                              <InnerShadow color="#ababab" height="15.0" radius="7.0" width="15.0" />
+                                          </effect>
+                                      </TextFlow>
+                           </content>
+                        </ScrollPane>
+                                <Separator prefWidth="200.0">
+                                    <padding>
+                                        <Insets top="2.0" />
+                                    </padding>
+                                </Separator>
+                                <TextField fx:id="console" onAction="#submitInput" prefHeight="32.0" prefWidth="535.0" VBox.vgrow="SOMETIMES">
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                    <effect>
+                                        <InnerShadow color="#ababab" height="15.0" radius="7.0" width="15.0" />
+                                    </effect>
+                                </TextField>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </VBox>
+    </children>
+</VBox>
