@@ -20,20 +20,34 @@ import java.util.Iterator;
  * Contains a Module List and performs operations related to modules
  */
 public class ModuleManager implements Iterable<Module> {
+    private static ModuleManager moduleManager = null;
     private static Root root;
-    private static ArrayList<Module> moduleList = new ArrayList<>();
-    // private static ArrayList<Task> allTasks;
+    private static ArrayList<Module> moduleList;
     private static HashMap<String, String> modulesMap;
 
     private static final String NO_KEYWORD = "";
 
-    public ModuleManager() {
+    private ModuleManager(Root root, HashMap<String, String> modulesMap) {
+        ModuleManager.root = root;
+        ModuleManager.modulesMap = modulesMap;
         moduleList = new ArrayList<>();
     }
 
-    public ModuleManager(Root root, HashMap<String, String> modulesMap) {
-        ModuleManager.modulesMap = modulesMap;
-        ModuleManager.root = root;
+    /**
+     * Returns the instance of the Module Manager class.
+     *
+     * @param root
+     *  The root of the Directory Tree
+     * @param modulesMap
+     *  The modules provided by NUS
+     * @return
+     *  The instance of the Module Manager
+     */
+    public static ModuleManager getInstance(Root root, HashMap<String, String> modulesMap) {
+        if (moduleManager == null) {
+            moduleManager = new ModuleManager(root, modulesMap);
+        }
+        return moduleManager;
     }
 
     public static Root getRoot() {

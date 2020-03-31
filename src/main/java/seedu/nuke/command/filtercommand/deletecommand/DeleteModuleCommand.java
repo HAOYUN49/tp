@@ -22,7 +22,7 @@ import static seedu.nuke.util.Message.messagePromptDeleteModuleIndices;
  */
 public class DeleteModuleCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "delm";
-    public static final String FORMAT = "delm <module code>";
+    public static final String FORMAT = "delm <module code> [ -e ]";
     public static final String MESSAGE_USAGE = COMMAND_WORD + System.lineSeparator() + "Delete module"
             + System.lineSeparator() + FORMAT + System.lineSeparator();
 

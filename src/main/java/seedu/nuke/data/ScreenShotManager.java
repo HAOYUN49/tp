@@ -26,7 +26,7 @@ public class ScreenShotManager {
 
     private static ScreenShot popLastScreenShot() throws EmptyStackException {
         undoStack.pop();
-        return undoStack.pop();
+        return undoStack.peek();
     }
 
     private static ScreenShot peekLastScreenShot() {

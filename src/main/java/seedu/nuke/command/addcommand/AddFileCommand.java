@@ -1,5 +1,6 @@
 package seedu.nuke.command.addcommand;
 
+import seedu.nuke.Executor;
 import seedu.nuke.command.Command;
 import seedu.nuke.command.CommandResult;
 import seedu.nuke.data.CategoryManager;
@@ -11,6 +12,7 @@ import seedu.nuke.directory.DirectoryTraverser;
 import seedu.nuke.directory.Task;
 import seedu.nuke.directory.TaskFile;
 import seedu.nuke.exception.IncorrectDirectoryLevelException;
+import seedu.nuke.gui.io.GuiExecutor;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,16 +28,19 @@ import static seedu.nuke.parser.Parser.CATEGORY_PREFIX;
 import static seedu.nuke.parser.Parser.FILE_PREFIX;
 import static seedu.nuke.parser.Parser.MODULE_PREFIX;
 import static seedu.nuke.parser.Parser.TASK_PREFIX;
+import static seedu.nuke.util.ExceptionMessage.MESSAGE_ADD_FILE_NOT_FOUND;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_CATEGORY_NOT_FOUND;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_DUPLICATE_TASK_FILE;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_FILE_IO_EXCEPTION;
-import static seedu.nuke.util.ExceptionMessage.MESSAGE_ADD_FILE_NOT_FOUND;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_FILE_SECURITY_EXCEPTION;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_FILE_SYSTEM_EXCEPTION;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_INCORRECT_DIRECTORY_LEVEL;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_INVALID_FILE_PATH;
+import static seedu.nuke.util.ExceptionMessage.MESSAGE_MISSING_FILE_PATH;
+import static seedu.nuke.util.ExceptionMessage.MESSAGE_MISSING_PARAMETERS;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_MODULE_NOT_FOUND;
 import static seedu.nuke.util.ExceptionMessage.MESSAGE_TASK_NOT_FOUND;
+import static seedu.nuke.util.Message.MESSAGE_NO_FILE_CHOSEN;
 import static seedu.nuke.util.Message.messageAddFileSuccess;
 
 /**
@@ -47,12 +52,12 @@ import static seedu.nuke.util.Message.messageAddFileSuccess;
  */
 public class AddFileCommand extends AddCommand {
     public static final String COMMAND_WORD = "addf";
-    public static final String FORMAT = COMMAND_WORD
-            + " <file name> -m <module code> -c <category name> -t <task description> -f <file path>";
+    public static final String FORMAT = COMMAND_WORD;
     public static final String MESSAGE_USAGE = COMMAND_WORD + System.lineSeparator() + "Add a file to task"
             + System.lineSeparator() + FORMAT + System.lineSeparator();
+
     public static final Pattern REGEX_FORMAT = Pattern.compile(
-            "(?<identifier>(?:\\s+\\w\\S*)+)"
+            "(?<identifier>(?:\\s+\\w\\S*)*)"
             + "(?<moduleCode>(?:\\s+" + MODULE_PREFIX + "(?:\\s+\\w\\S*)+)?)"
             + "(?<categoryName>(?:\\s+" + CATEGORY_PREFIX + "(?:\\s+\\w\\S*)+)?)"
             + "(?<taskDescription>(?:\\s+" + TASK_PREFIX + "(?:\\s+\\w\\S*)+)?)"
@@ -65,6 +70,7 @@ public class AddFileCommand extends AddCommand {
     private String taskDescription;
     private String fileName;
     private String filePath;
+
 
     /**
      * Constructs the command to add a file.
@@ -146,6 +152,32 @@ public class AddFileCommand extends AddCommand {
         this(moduleCode, categoryName, taskDescription, fileName, null);
     }
 
+    private void retrieveFile() throws Exception {
+        if (filePath.isEmpty()) {
+            if (Executor.isGui()) {
+                try {
+                    String[] chosenFileInformation = GuiExecutor.executeFileChooser();
+                    if (chosenFileInformation == null) {
+                        throw new Exception(MESSAGE_NO_FILE_CHOSEN);
+                    }
+                    filePath = chosenFileInformation[0];
+                    if (fileName.isEmpty()) {
+                        fileName = chosenFileInformation[1];
+                    }
+                } catch (Exception e) {
+                    throw new Exception(MESSAGE_FILE_IO_EXCEPTION);
+                }
+            } else {
+                throw new Exception(MESSAGE_MISSING_FILE_PATH);
+            }
+        }
+
+        if (fileName.isEmpty()) {
+            throw new Exception(MESSAGE_MISSING_PARAMETERS);
+        }
+    }
+
+
     /**
      * Executes the <b>Add File Command</b> to add a <b>File</b> into the <b>File List</b>.
      *
@@ -157,6 +189,7 @@ public class AddFileCommand extends AddCommand {
     public CommandResult execute() {
         try {
             Task parentTask = DirectoryTraverser.getTaskDirectory(moduleCode, categoryName, taskDescription);
+            retrieveFile();
             copyFile();
             TaskFile toAdd = new TaskFile(parentTask, fileName, filePath);
             parentTask.getFiles().add(toAdd);
@@ -181,6 +214,8 @@ public class AddFileCommand extends AddCommand {
             return new CommandResult(MESSAGE_INVALID_FILE_PATH);
         } catch (SecurityException e) {
             return new CommandResult(MESSAGE_FILE_SECURITY_EXCEPTION);
+        } catch (Exception e) {
+            return new CommandResult(e.getMessage());
         }
     }
 }

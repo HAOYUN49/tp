@@ -49,6 +49,7 @@ public class ListAllDeadlineTest {
         //    System.out.println(e.getMessage());
         //    return;
         //}
+        ModuleManager.getInstance(null, null);
         Command command = new Parser().parseCommand(ListAllTasksDeadlineCommand.COMMAND_WORD);
         CommandResult result = Executor.execute(command);
         if (ModuleManager.countAllTasks() == 0) {

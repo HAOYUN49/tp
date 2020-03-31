@@ -197,6 +197,9 @@ public class ListCreator {
      *  The sorted task list table
      */
     public static String createTaskListTable(ArrayList<Task> taskList, boolean isSorted) {
+        if (!isSorted) {
+            sortTaskList(taskList);
+        }
         StringBuilder taskListTable = new StringBuilder();
 
         taskListTable.append(createTaskListTableHeader());

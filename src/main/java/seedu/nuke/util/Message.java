@@ -293,4 +293,5 @@ public class Message {
     public static final String MESSAGE_UNDO_SUCCESS = "SUCCESS!! Data has been reverted to last state.\n";
 
     public static final String MESSAGE_OPEN_FILE_SUCCESS = "SUCCESS!! The files are opening now...\n";
+    public static final String MESSAGE_NO_FILE_CHOSEN = "No file was chosen.\n";
 }

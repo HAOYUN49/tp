@@ -22,31 +22,33 @@ import static seedu.nuke.util.Message.MESSAGE_EDIT_TASK_SUCCESS;
 public class MarkAsDoneCommand extends EditCommand {
     public static final String COMMAND_WORD = "done";
     public static final String FORMAT = COMMAND_WORD
-            + " -m <module code> -c <category name>"
-            + " -t <task description>";
+            + " -m <module code> -c <category name>";
     public static final String MESSAGE_USAGE = COMMAND_WORD + System.lineSeparator() + "Mark task as done"
             + System.lineSeparator() + FORMAT + System.lineSeparator();
     public static final Pattern REGEX_FORMAT = Pattern.compile(
-            "(?<moduleCode>(?:\\s+" + MODULE_PREFIX + "(?:\\s+[^-\\s]\\S*)+)?)"
-            + "(?<categoryName>(?:\\s+" + CATEGORY_PREFIX + "(?:\\s+[^-\\s]\\S*)+)?)"
-            + "(?<taskDescription>(?:\\s+" + TASK_PREFIX + "(?:\\s+[^-\\s]\\S*)+)?)"
+            "(?<identifier>(?:\\s+\\w\\S*)*)"
+            + "(?<moduleCode>(?:\\s+" + MODULE_PREFIX + "(?:\\s+\\w\\S*)+)?)"
+            + "(?<categoryName>(?:\\s+" + CATEGORY_PREFIX + "(?:\\s+\\w\\S*)+)?)"
             + "(?<invalid>(?:\\s+-.*)*)"
     );
-    private String taskDescription;
     private String moduleCode;
     private String categoryName;
+    private String taskDescription;
 
     /**
      * Constructs the command to mark a task as done.
      *
-     * @param taskDescription The description of the task to be marked as done.
-     * @param moduleCode The module code of the module containing the task to be marked as done.
-     * @param categoryName The name of the category containing the task to be marked as done.
+     * @param moduleCode
+     *  The module code of the module containing the task to be marked as done.
+     * @param categoryName
+     *  The name of the category containing the task to be marked as done.
+     * @param taskDescription
+     *  The description of the task to be marked as done.
      */
-    public MarkAsDoneCommand(String taskDescription, String moduleCode, String categoryName) {
-        this.taskDescription = taskDescription;
+    public MarkAsDoneCommand(String moduleCode, String categoryName, String taskDescription) {
         this.moduleCode = moduleCode;
         this.categoryName = categoryName;
+        this.taskDescription = taskDescription;
     }
 
     @Override

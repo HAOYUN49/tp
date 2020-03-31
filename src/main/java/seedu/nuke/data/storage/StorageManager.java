@@ -80,7 +80,7 @@ public class StorageManager {
     /**
      * Saves the Module List into a file.
      */
-    public void save2() {
+    public void saveList() {
         try {
             FileWriter fileWriter = new FileWriter(dataFileName);
             fileWriter.write(new Encoder(ModuleManager.getModuleList()).encode());
@@ -94,7 +94,7 @@ public class StorageManager {
     /**
      * Loads the Module List from the saved file.
      */
-    public void load2() {
+    public void loadList() {
         try {
             FileReader fileReader = new FileReader(dataFileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);

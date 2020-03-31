@@ -54,4 +54,5 @@ public class ExceptionMessage {
             "Alert! File access was denied by device's security program.\n";
     public static final String MESSAGE_DELETE_FILE_ERROR = "Alert! There was an error in deleting your file.\n";
     public static final String MESSAGE_FILE_NOT_FOUND = "Alert! File does not exists.\n";
+    public static final String MESSAGE_MISSING_FILE_PATH = "Alert! File path is missing.\n";
 }

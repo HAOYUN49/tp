@@ -11,7 +11,7 @@ import static seedu.nuke.util.Message.MESSAGE_SHOW_LIST;
 
 public class ListCategoryCommand extends ListCommand {
     public static final String COMMAND_WORD = "lsc";
-    public static final String FORMAT = COMMAND_WORD;
+    public static final String FORMAT = COMMAND_WORD + " [ <category keyword> -m <module keyword> -e -a ]";
     public static final String MESSAGE_USAGE = COMMAND_WORD + System.lineSeparator() + "List all categories of module"
             + System.lineSeparator() + FORMAT + System.lineSeparator();
 

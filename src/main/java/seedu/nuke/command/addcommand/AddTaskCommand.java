@@ -42,7 +42,6 @@ public class AddTaskCommand extends AddCommand {
             + "(?<categoryName>(?:\\s+" + CATEGORY_PREFIX + "(?:\\s+\\w\\S*)+)?)"
             + "(?<optional>(?:\\s+-[dp](?:\\s+\\w\\S*)+)*)"
             + "(?<invalid>.*)"
-
     );
     public static final Pattern REGEX_OPTIONAL_FORMAT = Pattern.compile(
             "(?<deadline>(?:\\s+" + DEADLINE_PREFIX + "(?:\\s+\\w\\S*)+)?)"
