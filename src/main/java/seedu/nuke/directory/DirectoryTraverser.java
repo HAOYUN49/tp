@@ -209,6 +209,8 @@ public class DirectoryTraverser {
     }
 
     /**
+<<<<<<< HEAD
+=======
      * Returns the base file level directory of the current directory.
      *
      * @return
@@ -224,6 +226,7 @@ public class DirectoryTraverser {
     }
 
     /**
+>>>>>>> master
      * Returns the module level directory of the current Directory.
      *
      * @return

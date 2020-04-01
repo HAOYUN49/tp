@@ -8,7 +8,6 @@ public class ExitCommand extends TaskCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD + System.lineSeparator() + "Exit from Nuke"
             + System.lineSeparator() + FORMAT + System.lineSeparator();
 
-
     private static boolean isExit; // To check if user requests to exit the program
 
     public ExitCommand() {

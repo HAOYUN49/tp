@@ -2,6 +2,7 @@ package seedu.nuke.util;
 
 import seedu.nuke.exception.InvalidFormatException;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -148,6 +149,27 @@ public class DateTimeFormat {
         }
         // Throws exception if fails to parse all time formats
         throw new InvalidTimeException();
+    }
+
+    /**
+     * Gets the closest date of a day of the week after the current date.
+     *
+     * @param dayOfWeek
+     *  The day of the week for which its date is to be found
+     * @return
+     *  The closest date of the specified day of the week
+     */
+    public static LocalDate getNextDateOfDay(DayOfWeek dayOfWeek) {
+        LocalDate currentDate = LocalDate.now();
+        DayOfWeek currentDay = currentDate.getDayOfWeek();
+        int dayCount = (dayOfWeek.ordinal() - currentDay.ordinal() + 7) % 7;
+
+        // Toggle between current day or week after
+        // if (dayCount == 0) {
+        //    dayCount = 7;
+        // }
+
+        return currentDate.plusDays(dayCount);
     }
 
     /**
